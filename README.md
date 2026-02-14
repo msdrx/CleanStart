@@ -9,7 +9,7 @@ The generated solution follows Clean Architecture principles — giving you a pr
 ## Installation
 
 ```bash
-dotnet new install CleanStart.Template
+dotnet new install CleanStart.Templates
 ```
 
 ## Usage
