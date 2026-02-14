@@ -1,0 +1,26 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Core\CleanStart.Domain\CleanStart.Domain.csproj" />
+    <ProjectReference Include="..\..\Shared\CleanStart.Shared\CleanStart.Shared.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!--#if (isNet6) -->
+    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="6.0.29" />
+    <!--#endif -->
+    <!--#if (isNet8) -->
+    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="8.0.11" />
+    <!--#endif -->
+    <!--#if (isNet10) -->
+    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="10.0.0" />
+    <!--#endif -->
+  </ItemGroup>
+
+</Project>

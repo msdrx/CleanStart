@@ -1,0 +1,198 @@
+{
+  "$schema": "http://json.schemastore.org/template",
+  "author": "CleanStart",
+  "classifications": [
+    "API",
+    "Clean Architecture",
+    "Solution"
+  ],
+  "identity": "CleanStart.CleanArchitecture",
+  "name": "CleanStart - Clean Architecture",
+  "shortName": "cleanstart",
+  "description": "A clean architecture solution template",
+  "tags": {
+    "language": "C#",
+    "type": "solution",
+    "editorTreatAs": "solution"
+  },
+  "sourceName": "CleanStart",
+  "preferNameDirectory": true,
+  "sources": [
+    {
+      "source": "./",
+      "target": "./",
+      "exclude": [
+        "src/**",
+        "**/[Bb]in/**",
+        "**/[Oo]bj/**",
+        ".template.config/**",
+        "**/*.filelist",
+        "**/*.user",
+        "**/*.lock.json",
+        ".vs/**",
+        ".idea/**",
+        ".artifacts/**",
+        ".prism.log",
+        "**/*.DotSettings.user"
+      ],
+      "modifiers": [
+        {
+          "condition": "(includeSrcFolder)",
+          "exclude": ["CleanStart.Flat.sln"]
+        },
+        {
+          "condition": "(!includeSrcFolder)",
+          "exclude": ["CleanStart.sln"],
+          "rename": {
+            "CleanStart.Flat.sln": "CleanStart.sln"
+          }
+        }
+      ]
+    },
+    {
+      "condition": "(!includeSrcFolder)",
+      "source": "src/",
+      "target": "./",
+      "exclude": [
+        "**/[Bb]in/**",
+        "**/[Oo]bj/**",
+        "**/*.filelist",
+        "**/*.user",
+        "**/*.lock.json"
+      ]
+    },
+    {
+      "condition": "(includeSrcFolder)",
+      "source": "src/",
+      "target": "src/",
+      "exclude": [
+        "**/[Bb]in/**",
+        "**/[Oo]bj/**",
+        "**/*.filelist",
+        "**/*.user",
+        "**/*.lock.json"
+      ]
+    }
+  ],
+  "guids": [
+    "DAC79461-1ED7-4869-85C0-C8DD2691E597",
+    "02EA681E-C7D8-13C7-8484-4AC65E1B71E8",
+    "7F5C9721-10AE-428F-8C3D-9AD4A04F210D",
+    "2291CE9A-B813-4C9A-A719-1C38599F278D",
+    "92560CD0-D113-47E6-A96B-392E893F6DDE",
+    "EAB9980A-02DE-47BB-9576-3306DC284245",
+    "68A98615-368D-4EA2-AB7D-8C1D9E033E28",
+    "974E6FBA-B4FB-427E-B59C-89BB18414A87",
+    "AED9399F-A8A0-4B34-8954-4C52EFEFE61D",
+    "B85E5731-2D72-489D-BBFA-2ABBC122DA17",
+    "06B836D4-9558-4B89-8D03-3E20B439E17B",
+    "353A29B4-5A53-477F-9947-66E2109D217A",
+    "B873A294-5CAE-4AAD-8DBD-A435F968853C",
+    "20616BD2-FE36-416A-A055-219503C4401D",
+    "5865B126-6BF6-4499-B525-0FA9479208B0",
+    "6DD8F0A1-29AA-444A-A187-EAD5C3695949"
+  ],
+  "symbols": {
+    "httpPort": {
+      "type": "generated",
+      "generator": "port",
+      "parameters": {
+        "low": 5000,
+        "high": 5300,
+        "fallback": 5211
+      },
+      "replaces": "5211"
+    },
+    "httpsPort": {
+      "type": "generated",
+      "generator": "port",
+      "parameters": {
+        "low": 7000,
+        "high": 7300,
+        "fallback": 7184
+      },
+      "replaces": "7184"
+    },
+    "iisHttpPort": {
+      "type": "generated",
+      "generator": "port",
+      "parameters": {
+        "low": 60000,
+        "high": 65000,
+        "fallback": 60626
+      },
+      "replaces": "60626"
+    },
+    "iisSslPort": {
+      "type": "generated",
+      "generator": "port",
+      "parameters": {
+        "low": 44300,
+        "high": 44400,
+        "fallback": 44394
+      },
+      "replaces": "44394"
+    },
+    "Framework": {
+      "type": "parameter",
+      "description": "The target framework for the project.",
+      "datatype": "choice",
+      "choices": [
+        {
+          "choice": "net6.0",
+          "description": "Target .NET 6.0"
+        },
+        {
+          "choice": "net8.0",
+          "description": "Target .NET 8.0"
+        },
+        {
+          "choice": "net10.0",
+          "description": "Target .NET 10.0"
+        }
+      ],
+      "replaces": "net8.0",
+      "defaultValue": "net8.0"
+    },
+    "isNet6": {
+      "type": "computed",
+      "value": "(Framework == \"net6.0\")"
+    },
+    "isNet8": {
+      "type": "computed",
+      "value": "(Framework == \"net8.0\")"
+    },
+    "isNet10": {
+      "type": "computed",
+      "value": "(Framework == \"net10.0\")"
+    },
+    "skipRestore": {
+      "type": "parameter",
+      "datatype": "bool",
+      "description": "If specified, skips the automatic restore of the project on create.",
+      "defaultValue": "false"
+    },
+    "includeSrcFolder": {
+      "type": "computed",
+      "value": "false"
+    }
+  },
+  "primaryOutputs": [
+    {
+      "path": "CleanStart.sln"
+    }
+  ],
+  "postActions": [
+    {
+      "condition": "(!skipRestore)",
+      "description": "Restore NuGet packages required by this project.",
+      "manualInstructions": [
+        {
+          "text": "Run 'dotnet restore'"
+        }
+      ],
+      "actionId": "210D431B-A78B-4D2F-B762-4ED3E3EA9025",
+      "continueOnError": true
+    }
+  ]
+}
