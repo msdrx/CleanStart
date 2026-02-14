@@ -2,13 +2,21 @@
 
   <PropertyGroup>
     <PackageType>Template</PackageType>
+
     <PackageVersion>0.1.0</PackageVersion>
     <PackageId>CleanStart.Templates</PackageId>
-    <Title>CleanStart - Clean Architecture Template</Title>
-    <Authors>Michael Sadradze</Authors>
-    <Description>A dotnet new template for Clean Architecture</Description>
+
+    <Title>CleanStart .NET Project Templates</Title>
+    <Description>dotnet project templates</Description>
     <PackageTags>dotnet-new;templates;clean-architecture;aspnetcore</PackageTags>
     <TargetFrameworks>net6.0;net8.0;net10.0</TargetFrameworks>
+
+    <Company>Mikheil Sadradze</Company>
+    <Authors>Mikheil Sadradze</Authors>
+    <RepositoryUrl>https://github.com/msdrx/CleanStart</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/msdrx/CleanStart</PackageProjectUrl>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
 
     <NoBuild>true</NoBuild>
     <IncludeContentInPack>true</IncludeContentInPack>
@@ -19,6 +27,10 @@
 
   <ItemGroup>
     <Content Include="templates/**" Exclude="**/bin/**;**/obj/**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="README.md" Pack="true" PackagePath="\" />
   </ItemGroup>
 
 </Project>
